@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kunal's 8-bit Resume</title>
+    <!-- latest -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
+    <style>
+        body {
+            padding-bottom: 50px;
+        }
+        .nes-progress {
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav style='padding: 20px; border-bottom: 3px solid #ccc; margin-bottom: 40px;'>
+        <div class="container">
+            <h2 style='margin-bottom: 0; align-items: center;'>
+                <i class="nes-icon trophy" style="align-content: center;"></i> OLED Paint <i class="nes-icon trophy"></i>
+            </h2>
+            <p>by Kunal Pai & Steven To</p>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <!-- Main left column -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <section class="nes-container with-title" style='margin-top: 0px;'>
+                    <h3 class="title">Project Details</h3>
+                    <div>
+                        <div class="projdetails" style="font-size: 14px;">
+                            <p>Our final lab project is a paint program similar to that of MSPaint. Using SPI, we allow the OLED screen to be the canvas that the user can paint on. The cursor that displays on the screen can be controlled by the user using the tilt readings acquired by the CC3200 accelerometer. The features that come with the program are similar to MSPaint and include things like changing colors, adjusting cursor size, erasing, and producing lines and shapes. These features can be accessed using an IR remote control and pressing the appropriate button depending on the tool.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="nes-container with-title" style='margin-top: 50px;'>
+                        <h3 class="title">Goals</h3>
+                        <div>
+                            <div class="lists">
+                                <ul class="nes-list is-circle" style='margin-bottom: 0; font-size: 14px;'>
+                                    <li>To establish an SPI connection between the CC3200 and the OLED display</li>
+                                    <li>To establish an I2C connection between the CC3200 and the accelerometer to obtain tilt readings</li>
+                                    <li>To enable GPIO interrupts to detect instances of remote button pressing</li>
+                                    <li>To decode additional buttons from the IR remote control using the Saleae logic analyzer for waveform analysis</li>
+                                    <li>To develop code that exhibits different paint tools and functionalities depending on the button press of the IR remote control</li>
+                                    <li>To connect our application to Wifi to send HTTP post requests</li>
+                                    <li>To set up a backend Python server that will receive HTTP post requests from the CC3200</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="nes-container with-title" style='margin-top: 50px;'>
+                        <h3 class="title">Discussion</h3>
+                        <div>
+                            <div class="lists">
+                                <ul class="nes-list is-circle" style='margin-bottom: 0; font-size: 14px;'>
+                                    <div></div>
+                                    <li>The first challenge we faced was the implementation of the cursor function, that just hovers over a painted area without affecting it. Since the Adafruit library does not have any “layer” functionality, we did this by creating two variants of the drawCircle and the fillCircle function. The regular function draws and fills the circle, while saving the stored color to the 2D 128 by 128 color buffer array. The drawCursor function draws a circle without saving the color, meaning that the color of the painted area would not be overridden by the cursor. The fillCursor function is the same as the fillCircle function, but, instead of writing the applied color onto the OLED, writes the color at that index that was saved into the 2D array. With this function, the original color is colored back into the OLED, and thus, the cursor helps the colors remain intact.</li>
+                                    <div></div></br>
+                                    <div></div>
+                                    <li>The second challenge we faced was sending multiple POST requests to our Flask server. After sending one request, the POST body would not send. This was fixed by freeing the globally declared string variable that stores the generated body from the generateBodyBitmap function, after the POST request has been sent.</li>
+                                    <div></div></br>
+                                    <div></div>
+                                    <li>The third challenge we faced was rendering the whole image. The original way we were sending the bitmap was in columns of 2 from 0 to 128, converting the integers of the colors as defined in “test.h” into strings and sending it separated by commas (for example: “65535,0,65535” represents a column where the three pixels are white, black, and white). This was inefficient, as we could only send 2 rows at a time, and the entire image could be generated only after 64 iterations. We improved the performance by encoding every color to one particular character and removing the comma separator, since we now know that every color is one character. On the backend side, we received a string of 16384 characters which we divided into 128 chunks and every chunk into 128 chunks, giving us the 2D array we need. Since we already had a lookup table defined, we changed it to account for the characters. This let us send 8 rows at a time, completing image rendering in 16 iterations, a 4 times faster performance.</li>
+                                    <div></div></br>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="nes-container with-title" style='margin-top: 50px;'>
+                        <h3 class="title">Demo Videos</h3>
+                        <div>
+                            <div class="lists">
+                                <iframe width="500" height="420"
+                                src="https://www.youtube.com/embed/Ygi-eUjCqoY">
+                                </iframe>
+                                </br>
+                                </br>
+                                <iframe width="500" height="420"
+                                src="https://www.youtube.com/embed/b3hn-VovGC8">
+                                </iframe>
+                                </br>
+                                </br>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
