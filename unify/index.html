@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UNIfyCourseAssistant</title>
+    <!-- latest -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
+    <style>
+        body {
+            padding-bottom: 50px;
+        }
+        .nes-progress {
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav style='padding: 20px; border-bottom: 3px solid #ccc; margin-bottom: 40px;'>
+        <div class="container">
+            <h2 style='margin-bottom: 0; align-items: center;'>
+                <i class="nes-icon trophy" style="align-content: center;"></i> UNIfy- Course Assistant <i class="nes-icon trophy"></i>
+            </h2>
+            <p>by Kunal Pai, Parth Shah, Harshil Patel & Keshav Agrawal</p>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <!-- Main left column -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <section class="nes-container with-title" style='margin-top: 30px;'>
+                    <h3 class="title">Inspiration   </h3>
+                    <div>
+                        <div class="projdetails" style="font-size: 14px;">
+                           <p>What is the single biggest issue that we face as undergraduates living off-campus? Resoundingly, in our group, we answered, "finding classes coherently and meeting new people in classes". We feel that after the pandemic, we had lost touch with the campus and we had forgotten how campus life works. A student needs to have classes that are nearby, not only in timings but also on foot. Couple that with the urge to take classes with friends or with people we know. Sounds like a lot of work and a lot of stress, doesn't it? This is exactly what we solve. </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="nes-container with-title" style='margin-top: 50px;'>
+                        <h3 class="title">What Does It Do?</h3>
+                        <div>
+                            <div class="lists">
+                                <div style='font-size: 14px;'>
+                                    <p>UNIfy Course Assistant is a suite of tools that help you along the way in a college quarter. Starting with registering for classes, helps you plan out a schedule and visualize your journey on campus every day. Our tool automatically creates the map and the calendar for you which can be exported easily. Our tool connects with your discord account and our Discord bot helps you out with course groups, course reminders, and other general tools. We created a vanilla recommendation system that recommends other people based on the classes you have taken using a matching algorithm from other users' classes. Using this, you would be able to match with students who have or are currently taking classes similar to you. Once a course commences, we help you find a discord link where you can meet other people and make friends. We have used RateMyProfessor, a very common tool that people use, for the course and professor evaluations.</p>  
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="nes-container with-title" style='margin-top: 50px;'>
+                        <h3 class="title">How We Built It</h3>
+                        <div>
+                            <div class="lists">
+                                <div style='font-size: 14px;'>
+                                    <p>Our project is a combination of many individual components that are stitched on a REACT website. We created a discord bot that helps out with main tasks on the website and user's daily life on discord. Discord bot uses the Discord API and databases that we have created by scraping websites like RateMyProfessor. Additionally, we create multiple components like the calendar using react.js, maps using google maps API, and database on SQLite. We have created our own recommendation tool that uses a combination of the same classes and similar classes to what you've taken to help you meet people with common interests.                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="nes-container with-title" style='margin-top: 50px;'>
+                        <h3 class="title">Challenges</h3>
+                        <div>
+                            <div class="lists">
+                                <div style='font-size: 14px;'>
+                                <p> One of the toughest challenges was to get the Google Maps API to work and create a Discord bot since we had no experience doing that. Apart from that, there were no public APIs for RMP and getting courses thus we had to create our own web scraper to fetch the courses for our database. </p>                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="nes-container with-title" style='margin-top: 50px;'>
+                        <h3 class="title">Demo Videos</h3>
+                        <div>
+                            <div class="lists">
+                                <iframe width="500px" height="420px"
+                                src="https://www.youtube.com/embed/Ax1v-L-QEtA">
+                                </iframe>
+                                </br>
+                                </br>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="nes-container with-title" style='margin-top: 50px; margin-bottom: 50px; margin-left: 10px;'>
+                    <h3 class="title">Code</h3>
+                    <div>
+                        <a href="https://github.com/helloparthshah/UNIfyCourseAssistant">
+                            <i class="nes-icon github"></i>
+                        </a>
+                        <span>GitHub</span>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</body>
